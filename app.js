@@ -9,8 +9,10 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
+import usersRouter from './routes/users.js';
+import postsRouter from './routes/posts.js';
 
 var app = express();
 
@@ -25,9 +27,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
 
-module.exports = app;
+export default app;

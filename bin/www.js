@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('node-hw-week3:server');
-var http = require('http');
+import app from '../app.js';
+import http from 'http';
+import debugLib from 'debug';
+const debug = debugLib('music-tutor-backend:server');
 
 /**
  * Get port from environment and store in Express.
