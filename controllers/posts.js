@@ -73,3 +73,15 @@ export const deletePost = async(req, res, next) => {
         next(error);
     }
 };
+
+export const deletePosts = async (req, res, next) => {
+  try {
+      const result = await PostModel.deleteMany({});
+      if (result.deletedCount === 0) {
+          return sendError(res, 404, 'No posts found to delete');
+      }
+      sendResponse(res, 200, {}, `${result.deletedCount} posts deleted successfully`);
+  } catch (error) {
+      next(error);
+  }
+};
